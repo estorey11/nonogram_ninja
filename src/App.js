@@ -1,11 +1,12 @@
 import React from 'react';
-import logo from './logo.svg';
+import NonCreatorContainer from './containers/NonCreatorContainer'
+
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      
+      <NonCreatorContainer />
     </div>
   );
 }
