@@ -5,14 +5,14 @@ import { connect } from 'react-redux'
 
 class NewNonContainer extends Component {
 
-  state={vert: 5, hor: 5}
+  state={yLength: 5, xLength: 5}
 
   handleSizeChange=event=>{
     this.setState({[event.target.name]: event.target.value})
   }
 
   componentDidUpdate(){
-    this.props.resizeGrid(this.state.vert, this.state.hor)
+    this.props.resizeGrid(this.state.yLength, this.state.xLength)
   }
 
 
@@ -21,15 +21,15 @@ class NewNonContainer extends Component {
 
     return (
       <div>
-        <GridSizer handleOnChange={this.handleSizeChange} vert={this.state.vert} hor={this.state.hor}/>
-        <NewGridContainer vert={this.state.vert} hor={this.state.hor}/>
+        <GridSizer handleOnChange={this.handleSizeChange} yLength={this.state.yLength} xLength={this.state.xLength}/>
+        <NewGridContainer yLength={this.state.yLength} xLength={this.state.xLength}/>
       </div>
     );
   }
 }
 
 const mapDispatchToProps = dispatch => ({
-  resizeGrid: (vert, hor) => dispatch({type: 'RESIZE_GRID', vert, hor}),
+  resizeGrid: (yLength, xLength) => dispatch({type: 'RESIZE_GRID', yLength, xLength}),
 })
 
 

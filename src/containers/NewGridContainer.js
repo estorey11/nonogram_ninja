@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 class NewGridContainer extends Component {
 
   handleCellClick=event=>{
-
+    const coords= event.target.tagName
   }
 
 
