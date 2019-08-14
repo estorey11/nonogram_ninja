@@ -1,12 +1,12 @@
 import React from 'react';
-import NonCreatorContainer from './containers/NonCreatorContainer'
+import NewNonContainer from './containers/NewNonContainer'
 
 import './App.css';
 
 function App() {
   return (
     <div className="App">
-      <NonCreatorContainer />
+      <NewNonContainer />
     </div>
   );
 }

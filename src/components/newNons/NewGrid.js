@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 
-class GridCreator extends Component {
+class NewGrid extends Component {
 
 
   mapGrid=()=>{
@@ -34,4 +34,4 @@ class GridCreator extends Component {
   }
 }
 
-export default GridCreator
+export default NewGrid

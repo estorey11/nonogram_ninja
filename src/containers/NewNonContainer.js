@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import GridSizer from '../components/nonCreators/GridSizer'
-import GridCreator from '../components/nonCreators/GridCreator'
+import GridSizer from '../components/newNons/GridSizer'
+import NewGrid from '../components/newNons/NewGrid'
 import { connect } from 'react-redux'
 
-class NonCreatorContainer extends Component {
+class NewNonContainer extends Component {
 
   state={vert: 5, hor: 5}
 
@@ -37,15 +37,21 @@ class NonCreatorContainer extends Component {
 
 
   render() {
-    const grid = this.gridFromSize()
+
 
     return (
       <div>
         <GridSizer handleOnChange={this.handleSizeChange} vert={this.state.vert} hor={this.state.hor}/>
-        <GridCreator grid={grid} handleOnClick={this.handleCellClick}/>
+        <NewGrid grid={this.props.grid} handleOnClick={this.handleCellClick}/>
       </div>
     );
   }
 }
 
-export default NonCreatorContainer
+const mapStateToProps = state => ({ grid: state.grid })
+
+const mapDispatchToProps = dispatch => ({
+  resizeGrid: (vert, hor) => dispatch({type: 'ADD_RESTAURANT', vert, hor}),
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(NewNonContainer)
