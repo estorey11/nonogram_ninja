@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import GridSizer from '../components/newNons/GridSizer'
-import NewGrid from '../components/newNons/NewGrid'
+import NewGridContainer from './NewGridContainer'
 import { connect } from 'react-redux'
 
 class NewNonContainer extends Component {
@@ -11,29 +11,9 @@ class NewNonContainer extends Component {
     this.setState({[event.target.name]: event.target.value})
   }
 
-  handleCellClick=event=>{
-
+  componentDidUpdate(){
+    this.props.resizeGrid(this.state.vert, this.state.hor)
   }
-
-
-  gridFromSize=()=>{
-
-    let grid=[]
-    let row=[]
-
-    for (var i = 0; i < this.state.vert; i++){
-      row =[];
-      for (var j = 0; j < this.state.hor; j++){
-        row[j]=0
-      }
-
-      grid[i]=row
-    }
-
-    return grid;
-
-  }
-
 
 
   render() {
@@ -42,16 +22,15 @@ class NewNonContainer extends Component {
     return (
       <div>
         <GridSizer handleOnChange={this.handleSizeChange} vert={this.state.vert} hor={this.state.hor}/>
-        <NewGrid grid={this.props.grid} handleOnClick={this.handleCellClick}/>
+        <NewGridContainer vert={this.state.vert} hor={this.state.hor}/>
       </div>
     );
   }
 }
 
-const mapStateToProps = state => ({ grid: state.grid })
-
 const mapDispatchToProps = dispatch => ({
-  resizeGrid: (vert, hor) => dispatch({type: 'ADD_RESTAURANT', vert, hor}),
+  resizeGrid: (vert, hor) => dispatch({type: 'RESIZE_GRID', vert, hor}),
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewNonContainer)
+
+export default connect(null, mapDispatchToProps)(NewNonContainer)

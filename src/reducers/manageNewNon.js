@@ -11,7 +11,8 @@ export default function manageNewNon(state = {
       for (var i = 0; i < action.vert; i++){
         row =[];
         for (var j = 0; j < action.hor; j++){
-          row[j]= 0 || state.grid[i][j]
+          if (state.grid[i]){row[j]= state.grid[i][j] || 0}
+          else {row[j]= 0}
         }
         grid[i]=row
       }
