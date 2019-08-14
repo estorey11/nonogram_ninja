@@ -5,10 +5,8 @@ import { connect } from 'react-redux'
 class NewGridContainer extends Component {
 
   handleCellClick=event=>{
-    const coords= event.target.tagName
+    this.props.switchCell(event.target.id)
   }
-
-
 
 
   render() {
@@ -23,6 +21,8 @@ class NewGridContainer extends Component {
 
 const mapStateToProps = state => ({ grid: state.grid })
 
+const mapDispatchToProps = dispatch => ({
+  switchCell: (coords) => dispatch({type: 'SWITCH_CELL', coords}),
+})
 
-
-export default connect(mapStateToProps)(NewGridContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(NewGridContainer)

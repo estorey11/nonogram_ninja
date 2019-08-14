@@ -16,12 +16,13 @@ class NewGrid extends Component {
   mapRow= (row, y)=>{
     return(
       row.map((cell, x)=>{
-        return (<td key={x.toString()+','+y.toString()}>{cell}</td>)
+        return (<td key={x.toString()+','+y.toString()} id={x.toString()+','+y.toString()} onClick={this.props.handleOnClick}>{cell}</td>)
       })
     )
   }
 
   render() {
+    
     return (
       <div>
         <table>

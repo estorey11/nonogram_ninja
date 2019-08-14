@@ -8,7 +8,8 @@ import manageNewNon from './reducers/manageNewNon'
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 
-const store = createStore(manageNewNon)
+const store = createStore(manageNewNon, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+)
 
 ReactDOM.render(
   <Provider store={store}>

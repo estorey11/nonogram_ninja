@@ -17,17 +17,23 @@ export default function manageNewNon(state = {
         grid[i]=row
       }
 
+      return {
+        ...state,
+        grid: grid
+      }
+
     case 'SWITCH_CELL':
 
       const coords = action.coords.split(',')
       const x = parseInt(coords[0])
       const y = parseInt(coords[1])
-      const grid = state.grid
-      grid[y][x]=(grid[y][x]===0 ? 1 : 0)
+      let clickedGrid = [...state.grid]
 
+      clickedGrid[y][x]=(clickedGrid[y][x]===0 ? 1 : 0)
+      
       return {
         ...state,
-        grid: grid
+        grid: clickedGrid
       }
 
 
