@@ -1,0 +1,2 @@
+class Nonogram < ApplicationRecord
+end
