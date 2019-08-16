@@ -1,4 +1,4 @@
-export function postNonograms(newNonData) {
+export function postNonogram(newNonData) {
   return (dispatch) => {
     dispatch({ type: 'START_NON_POST' });
     return fetch('/nonograms', {method: 'POST', body: JSON.stringify(newNonData)})
@@ -6,4 +6,8 @@ export function postNonograms(newNonData) {
           error => dispatch({type : "REQUEST_FAILED", error : error})
           );
   };
+}
+
+export function switchCell(coords) {
+  return (dispatch)=> dispatch({type: 'SWITCH_CELL', coords})
 }

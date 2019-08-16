@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Grid from '../components/Grid'
 import { connect } from 'react-redux'
 import SubmitButton from '../components/SubmitButton'
+import {postNonogram, switchCell} from '../actions/newNonActions'
 
 class NewGridContainer extends Component {
 
@@ -10,7 +11,23 @@ class NewGridContainer extends Component {
   }
 
   handleSubmitClick=event=>{
+    
+    this.props.postNonogram(this.gridConverter())
+  }
 
+  gridConverter=()=>{
+    const height=this.props.grid.length
+    const width=this.props.grid[0].length
+    const solution=this.solutionConverter();
+
+    return {nonogram: {height: height, width: width, solution: solution} }
+  }
+
+  solutionConverter=()=>{
+    const solutionRows=this.props.grid.map(row=>row.join())
+    const solutionString=solutionRows.join()
+
+    return parseInt(solutionString)
   }
 
 
@@ -27,9 +44,7 @@ class NewGridContainer extends Component {
 
 const mapStateToProps = state => ({ grid: state.newNon.grid })
 
-const mapDispatchToProps = dispatch => ({
-  switchCell: (coords) => dispatch({type: 'SWITCH_CELL', coords}),
-})
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewGridContainer)
+
+export default connect(mapStateToProps, {postNonogram, switchCell})(NewGridContainer)

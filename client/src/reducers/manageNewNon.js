@@ -1,5 +1,5 @@
 export default function manageNewNon(state = {
-  grid: [[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]],
+  grid: [[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]], isFetching: false,
 }, action) {
   switch (action.type) {
 
@@ -30,12 +30,23 @@ export default function manageNewNon(state = {
       let clickedGrid = [...state.grid]
 
       clickedGrid[y][x]=(clickedGrid[y][x]===0 ? 1 : 0)
-      
+
       return {
         ...state,
         grid: clickedGrid
       }
 
+    case 'START_NON_POST':
+
+      return {...state, isFetching: true}
+
+    case 'REQUEST_SUCCEEDED':
+
+      return {...state, isFetching: false}
+
+    case 'REQUEST_FAILED':
+
+      return {...state, isFetching: false}
 
 
     default:
