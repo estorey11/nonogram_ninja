@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import SubmitButton from '../components/SubmitButton'
 import {postNonogram, switchCell} from '../actions/newNonActions'
 
+
 class NewGridContainer extends Component {
 
   handleCellClick=event=>{
@@ -11,7 +12,6 @@ class NewGridContainer extends Component {
   }
 
   handleSubmitClick=event=>{
-    
     this.props.postNonogram(this.gridConverter())
   }
 
@@ -24,10 +24,8 @@ class NewGridContainer extends Component {
   }
 
   solutionConverter=()=>{
-    const solutionRows=this.props.grid.map(row=>row.join())
-    const solutionString=solutionRows.join()
-
-    return parseInt(solutionString)
+    const solutionRows=this.props.grid.map(row=>row.join(''))
+    return solutionRows.join('')
   }
 
 

@@ -13,7 +13,8 @@
 ActiveRecord::Schema.define(version: 2019_08_15_225138) do
 
   create_table "nonograms", force: :cascade do |t|
-    t.binary "solution"
+    t.text "solution"
+    t.string "name"
     t.integer "height"
     t.integer "width"
     t.integer "user_id"

@@ -6,4 +6,4 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-nonogram = Nonogram.create({height: 5, width: 5, solution: 1110111011011111011110101})
+nonogram = Nonogram.create({name: "Basic 5x5", height: 5, width: 5, solution: '1110111011011111011110101'})
