@@ -25,7 +25,7 @@ class NewGridContainer extends Component {
   }
 }
 
-const mapStateToProps = state => ({ grid: state.grid })
+const mapStateToProps = state => ({ grid: state.newNon.grid })
 
 const mapDispatchToProps = dispatch => ({
   switchCell: (coords) => dispatch({type: 'SWITCH_CELL', coords}),
