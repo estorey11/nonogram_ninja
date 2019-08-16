@@ -1,5 +1,5 @@
 export default function manageNon(state = {
-  grid: [[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]],
+  grid: [[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]], isFetching: false
 }, action) {
   switch (action.type) {
 
@@ -17,7 +17,13 @@ export default function manageNon(state = {
         grid: clickedGrid
       }
 
+    case 'START_NON_REQUEST':
 
+      return {...state, isFetching: true}
+
+    case 'ADD_NONOGRAMS':
+
+      return {...state, isFetching: false, nonograms: action.nonograms}
 
     default:
       return state;

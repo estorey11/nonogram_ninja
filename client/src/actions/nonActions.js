@@ -1,8 +1,8 @@
-export function fetchCats() {
+export function fetchNonograms() {
   return (dispatch) => {
-    dispatch({ type: 'START_ADDING_CATS_REQUEST' });
-    return fetch('http://www.catapi.com')
+    dispatch({ type: 'START_NON_REQUEST' });
+    return fetch('http://http://localhost:3000/nonograms/1')
       .then(response => response.json())
-      .then(cats => dispatch({ type: 'ADD_CATS', cats }));
+      .then(nonogram => dispatch({ type: 'ADD_NONOGRAMS', nonograms }));
   };
 }
