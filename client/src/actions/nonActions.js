@@ -1,8 +1,8 @@
 export function fetchNonograms() {
   return (dispatch) => {
     dispatch({ type: 'START_NON_REQUEST' });
-    return fetch('http://http://localhost:3000/nonograms/1')
+    return fetch('/nonograms')
       .then(response => response.json())
-      .then(nonogram => dispatch({ type: 'ADD_NONOGRAMS', nonograms }));
+      .then(nonograms => dispatch({ type: 'ADD_NONOGRAMS', nonograms }));
   };
 }
