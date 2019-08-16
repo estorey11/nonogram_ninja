@@ -3,10 +3,10 @@ import Grid from '../components/Grid'
 import { connect } from 'react-redux'
 import SubmitButton from '../components/SubmitButton'
 
-class NewGridContainer extends Component {
+class GridContainer extends Component {
 
   handleCellClick=event=>{
-    this.props.switchCell(event.target.id)
+  //  this.props.switchCell(event.target.id)
   }
 
   handleSubmitClick=event=>{
@@ -25,11 +25,11 @@ class NewGridContainer extends Component {
   }
 }
 
-const mapStateToProps = state => ({ grid: state.newNon.grid })
+const mapStateToProps = state => ({ grid: state.Non.grid })
 
 const mapDispatchToProps = dispatch => ({
   switchCell: (coords) => dispatch({type: 'SWITCH_CELL', coords}),
 })
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewGridContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(GridContainer)

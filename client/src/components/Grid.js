@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 
-class NewGrid extends Component {
+class Grid extends Component {
 
 
   mapGrid=()=>{
@@ -22,7 +22,7 @@ class NewGrid extends Component {
   }
 
   render() {
-    
+
     return (
       <div>
         <table>
@@ -35,4 +35,4 @@ class NewGrid extends Component {
   }
 }
 
-export default NewGrid
+export default Grid
