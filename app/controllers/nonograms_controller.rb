@@ -19,7 +19,8 @@ class NonogramsController < ApplicationController
   private
 
   def nonogram_params
-    params.require(:nonogram).permit(:solution, :user_id, :length, :width)
+    puts params
+    params.require(:nonogram).permit(:solution, :user_id, :height, :width)
   end
 
 
