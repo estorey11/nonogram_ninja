@@ -10,6 +10,11 @@ class NonogramsController < ApplicationController
     render json: @nonogram
   end
 
+  def index
+    @nonograms=Nonogram.all
+    render json: @nonograms
+  end
+
 
   private
 
