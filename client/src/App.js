@@ -4,6 +4,8 @@ import NonContainer from './containers/NonContainer'
 import { connect } from 'react-redux'
 import {fetchNonograms} from './actions/nonActions'
 import {  Route } from 'react-router-dom';
+import Navigation from './components/Navigation'
+
 
 
 import './App.css';
@@ -18,9 +20,10 @@ class App extends React.Component {
     return (
 
         <div className="App">
-          
+          <Navigation />
           <Route path="/nonograms/new" component={ NewNonContainer } />
-          <NonContainer />
+          <Route path="/nonograms" component={ NonContainer } />
+
         </div>
 
     );
