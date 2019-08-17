@@ -19,11 +19,11 @@ const store = createStore(rootReducer, compose(
 )
 
 ReactDOM.render(
-  <Provider store={store}>
-    <Router>
-      <App />
-    </Router>
-  </Provider>,
+    <Provider store={store}>
+      <Router>
+        <App />
+      </Router>
+    </Provider>,
 document.getElementById('root')
 )
 
