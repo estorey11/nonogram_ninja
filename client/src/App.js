@@ -21,8 +21,8 @@ class App extends React.Component {
 
         <div className="App">
           <Navigation />
-          <Route path="/nonograms/new" component={ NewNonContainer } />
-          <Route path="/nonograms" component={ NonContainer } />
+          <Route exact path="/nonograms/new" component={ NewNonContainer } />
+          <Route exact path="/nonograms" component={ NonContainer } />
 
         </div>
 
