@@ -12,6 +12,7 @@ class NonContainer extends Component {
 
     return (
       <div>
+        Test
         <GridContainer />
       </div>
     );
