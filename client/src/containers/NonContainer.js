@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import GridSizer from '../components/newNons/GridSizer'
 import GridContainer from './GridContainer'
 import { connect } from 'react-redux'
+import {setSolutionAndCluesFromSpecs} from '../actions/nonActions'
 
 
 class NonContainer extends Component {
@@ -12,6 +12,7 @@ class NonContainer extends Component {
   render() {
     let nonogram= this.props.nonograms[this.props.match.params.nonID-1]
     if (nonogram){
+      this.props.setSolutionAndCluesFromSpecs(nonogram.height, nonogram.width, nonogram.solution)
       return (
         <div>
           <h2>{nonogram.name || "Unnamed"}</h2>
@@ -29,4 +30,4 @@ class NonContainer extends Component {
 
 
 
-export default connect(null)(NonContainer)
+export default connect(null, {setSolutionAndCluesFromSpecs})(NonContainer)

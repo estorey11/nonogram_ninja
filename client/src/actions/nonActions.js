@@ -47,7 +47,7 @@ function createRowClues(grid){
   return rowClues
 }
 
-export function setSolutionAndCluesfromSpecs(height, width, solution){
+export function setSolutionAndCluesFromSpecs(height, width, solution){
   const grid=createSolutionGrid(height, width, solution)
   const rowClues=createRowClues(grid)
   const colClues=[[0]]
