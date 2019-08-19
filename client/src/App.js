@@ -23,8 +23,8 @@ class App extends React.Component {
         <div className="App">
           <Navigation />
           <Route exact path="/nonograms/new" component={ NewNonContainer } />
-          <Route exact path="/nonograms" render={() => <NonList nonograms={this.props.nonograms}/> } />
-
+          <Route exact path='/nonograms' render={routerProps => <NonList {...routerProps} nonograms={this.props.nonograms}/>} />
+          <Route exact path={`nonograms/:nonID`} render={routerProps => <NonContainer {...routerProps} /> }/>
         </div>
       </body>
     );

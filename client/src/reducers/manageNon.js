@@ -1,7 +1,8 @@
 const defaultGrid=[[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]]
+const defaultNonograms=[{id:0, height: 5, width: 5, solution: '0000000000000000000000000'}]
 
 export default function manageNon(state = {
-  grid: defaultGrid, gridSolution: defaultGrid, isFetching: false
+  grid: defaultGrid, gridSolution: defaultGrid, isFetching: false, nonograms: defaultNonograms
 }, action) {
   switch (action.type) {
 

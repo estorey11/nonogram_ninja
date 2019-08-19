@@ -1,16 +1,15 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-const NonList = props => {
-  
-  const renderNons = props.nonograms.map(nonogram =>
-    <Link key={nonogram.id} to={`/nonograms/${nonogram.id}`}>{nonogram.width}x{nonogram.height} {nonogram.name}</Link>
-  );
+const NonList = (props) => {
 
+  const renderNons = props.nonograms.map(nonogram =>
+    <li><Link key={nonogram.id} to={`/nonograms/${nonogram.id}`}>{nonogram.width}x{nonogram.height} {nonogram.name}</Link></li>
+  );
   return (
-    <div>
+    <ul style={{listStyle: 'none'}}>
       {renderNons}
-    </div>
+    </ul>
   );
 };
 
