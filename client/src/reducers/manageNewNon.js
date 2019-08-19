@@ -10,9 +10,9 @@ export default function manageNewNon(state = {
       let grid=[]
       let row=[]
 
-      for (var i = 0; i < action.yLength; i++){
+      for (let i = 0; i < action.yLength; i++){
         row =[];
-        for (var j = 0; j < action.xLength; j++){
+        for (let j = 0; j < action.xLength; j++){
           if (state.grid[i]){row[j]= state.grid[i][j] || 0}
           else {row[j]= 0}
         }
