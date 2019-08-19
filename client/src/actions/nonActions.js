@@ -1,3 +1,5 @@
+import { transpose } from 'mathjs'
+
 export function fetchNonograms() {
   return (dispatch) => {
     dispatch({ type: 'START_NON_REQUEST' });
@@ -13,10 +15,13 @@ function createSolutionGrid(height, width, solution){
   let row=[]
 
   for (let y = 0; y < height; y++){
+    row=[]
     for (let x = 0; x < width; x++){
-      row[x]=parseInt(solution.charAt(y+x))
+      row[x]=parseInt(solution.charAt(y*width+x))
     }
+
     grid[y]=row
+
   }
 
   return grid
@@ -38,7 +43,7 @@ function createRowClues(grid){
         clues[chunk]++
       }
       else if (row[i]===0 && chunking===true) {
-        chunking===false
+        chunking=false
       }
     }
     return clues
@@ -47,10 +52,12 @@ function createRowClues(grid){
   return rowClues
 }
 
+
+
 export function setSolutionAndCluesFromSpecs(height, width, solution){
   const grid=createSolutionGrid(height, width, solution)
   const rowClues=createRowClues(grid)
-  const colClues=[[0]]
+  const colClues=createRowClues(transpose(grid))
 
   return (dispatch)=> dispatch({type: 'SET_GRID_SOLUTION_AND_CLUES', grid, rowClues, colClues})
 }
