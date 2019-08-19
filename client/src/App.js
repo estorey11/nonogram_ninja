@@ -3,7 +3,7 @@ import NewNonContainer from './containers/NewNonContainer'
 import NonContainer from './containers/NonContainer'
 import { connect } from 'react-redux'
 import {fetchNonograms} from './actions/nonActions'
-import {  Route } from 'react-router-dom';
+import {  Route, Switch, withRouter } from 'react-router-dom';
 import Navigation from './components/Navigation'
 import NonList from './components/nons/NonList'
 
@@ -22,9 +22,12 @@ class App extends React.Component {
       <body style={{backgroundColor: 'lightgrey'}}>
         <div className="App">
           <Navigation />
-          <Route exact path="/nonograms/new" component={ NewNonContainer } />
-          <Route exact path='/nonograms' render={routerProps => <NonList {...routerProps} nonograms={this.props.nonograms}/>} />
-          <Route path="/nonograms/:nonID" render={routerProps => <NonContainer {...routerProps} nonogram={this.props.nonograms[routerProps.match.params.nonID-1]}/> }/>
+          <Switch>
+            <Route exact path="/nonograms/new" component={ NewNonContainer } />
+            <Route exact path="/nonograms/:nonID" render={routerProps => <NonContainer {...routerProps} nonograms={this.props.nonograms} /> }/>
+            <Route exact path='/nonograms' render={routerProps => <NonList {...routerProps} nonograms={this.props.nonograms}/>} />
+
+          </Switch>
         </div>
       </body>
     );
@@ -33,4 +36,4 @@ class App extends React.Component {
 
 const mapStateToProps = state => ({ nonograms: state.non.nonograms })
 
-export default connect(mapStateToProps, {fetchNonograms})(App);
+export default withRouter(connect(mapStateToProps, {fetchNonograms})(App));

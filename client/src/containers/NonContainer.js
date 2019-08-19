@@ -7,15 +7,23 @@ import { connect } from 'react-redux'
 class NonContainer extends Component {
 
 
+
+
   render() {
-
-
-    return (
-      <div>
-        Test
-        <GridContainer />
-      </div>
-    );
+    let nonogram= this.props.nonograms[this.props.match.params.nonID-1]
+    if (nonogram){
+      return (
+        <div>
+          <h2>{nonogram.name || "Unnamed"}</h2>
+        </div>
+      )
+    }
+    else {
+      return (
+        <div>
+        </div>
+      )
+    }
   }
 }
 
