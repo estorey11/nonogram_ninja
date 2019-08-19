@@ -2,7 +2,7 @@ const defaultGrid=[[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]]
 const defaultNonograms=[{id:0, height: 5, width: 5, solution: '0000000000000000000000000'}]
 
 export default function manageNon(state = {
-  grid: defaultGrid, gridSolution: defaultGrid, isFetching: false, nonograms: defaultNonograms
+  grid: defaultGrid, gridSolution: defaultGrid, isFetching: false, nonograms: defaultNonograms, rowClues: [], colClues: []
 }, action) {
   switch (action.type) {
 
@@ -27,6 +27,10 @@ export default function manageNon(state = {
     case 'ADD_NONOGRAMS':
 
       return {...state, isFetching: false, nonograms: action.nonograms}
+
+    case 'SET_GRID_SOLUTION_AND_CLUES':
+
+      return {...state, gridSolution: action.grid, rowClues: action.rowClues, colClues: action.colClues}
 
     default:
       return state;
