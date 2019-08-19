@@ -4,7 +4,7 @@ import manageNon from './manageNon'
 
 const rootReducer = combineReducers({
   newNon: manageNewNon,
-  Non: manageNon
+  non: manageNon
 });
 
 export default rootReducer;

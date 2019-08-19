@@ -5,6 +5,7 @@ import { connect } from 'react-redux'
 import {fetchNonograms} from './actions/nonActions'
 import {  Route } from 'react-router-dom';
 import Navigation from './components/Navigation'
+import NonList from './components/nons/NonList'
 
 
 
@@ -22,7 +23,7 @@ class App extends React.Component {
         <div className="App">
           <Navigation />
           <Route exact path="/nonograms/new" component={ NewNonContainer } />
-          <Route exact path="/nonograms" component={ NonContainer } />
+          <Route exact path="/nonograms" render={() => <NonList nonograms={this.props.nonograms}/> } />
 
         </div>
       </body>
@@ -30,6 +31,6 @@ class App extends React.Component {
   }
 }
 
+const mapStateToProps = state => ({ nonograms: state.non.nonograms })
 
-
-export default connect(null, {fetchNonograms})(App);
+export default connect(mapStateToProps, {fetchNonograms})(App);

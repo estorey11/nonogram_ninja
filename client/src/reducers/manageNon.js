@@ -1,5 +1,7 @@
+const defaultGrid=[[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]]
+
 export default function manageNon(state = {
-  grid: [[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]], isFetching: false
+  grid: defaultGrid, gridSolution: defaultGrid, isFetching: false
 }, action) {
   switch (action.type) {
 

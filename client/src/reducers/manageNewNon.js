@@ -1,5 +1,7 @@
+const defaultGrid=[[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]]
+
 export default function manageNewNon(state = {
-  grid: [[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]], isFetching: false,
+  grid: defaultGrid, isFetching: false,
 }, action) {
   switch (action.type) {
 
@@ -42,7 +44,7 @@ export default function manageNewNon(state = {
 
     case 'REQUEST_SUCCEEDED':
 
-      return {...state, isFetching: false}
+      return {...state, isFetching: false, grid: defaultGrid}
 
     case 'REQUEST_FAILED':
 
