@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import {Table} from 'react-bootstrap'
-import '../custom.css'
+import '../../custom.css'
 
 
-class Grid extends Component {
+class NewGrid extends Component {
 
 
   mapGrid=()=>{
@@ -15,7 +15,7 @@ class Grid extends Component {
     return grid;
   }
 
-  mapRow= (row, y)=>{
+  mapRow(row, y){
     return(
       row.map((cell, x)=>{
         return (<td style={cell===1 ? {backgroundColor: 'black'} : {backgroundColor: 'white'}} key={x.toString()+','+y.toString()} id={x.toString()+','+y.toString()} onClick={this.props.handleOnClick}>{}</td>)
@@ -37,4 +37,4 @@ class Grid extends Component {
   }
 }
 
-export default Grid
+export default NewGrid

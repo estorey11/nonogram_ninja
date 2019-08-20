@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Grid from '../components/Grid'
+import NewGrid from '../components/newNons/NewGrid'
 import { connect } from 'react-redux'
 import SubmitButton from '../components/SubmitButton'
 
@@ -19,7 +19,7 @@ class GridContainer extends Component {
     return (
       <div>
         <SubmitButton handleOnClick={this.handleSubmitClick}/>
-        <Grid grid={this.props.grid} handleOnClick={this.handleCellClick}/>
+        <NewGrid grid={this.props.grid} handleOnClick={this.handleCellClick}/>
       </div>
     );
   }
