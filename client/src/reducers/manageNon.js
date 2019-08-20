@@ -8,10 +8,10 @@ export default function manageNon(state = {
 
     case 'SWITCH_CELL':
 
-      let coords = action.coords.split(',')
-      let x = parseInt(coords[0])
-      let y = parseInt(coords[1])
-      let clickedGrid = [...state.grid]
+      const  coords = action.coords.split(',')
+      const  x = parseInt(coords[0])
+      const  y = parseInt(coords[1])
+      let  clickedGrid = [...state.grid]
 
       clickedGrid[y][x]=(clickedGrid[y][x]===0 ? 1 : 0)
 
@@ -34,16 +34,16 @@ export default function manageNon(state = {
 
     case 'RIGHT_CLICK_CELL':
 
-      coords = action.coords.split(',')
-      x = parseInt(coords[0])
-      y = parseInt(coords[1])
-      clickedGrid = [...state.grid]
+      const rCoords = action.coords.split(',')
+      const rX = parseInt(rCoords[0])
+      const rY = parseInt(rCoords[1])
+      let rClickedGrid = [...state.grid]
 
-      clickedGrid[y][x]=(clickedGrid[y][x]!='X' ? 'X' : 0)
+      rClickedGrid[rY][rX]=(rClickedGrid[rY][rX]!='X' ? 'X' : 0)
 
       return {
         ...state,
-        grid: clickedGrid
+        grid: rClickedGrid
       }
 
     default:

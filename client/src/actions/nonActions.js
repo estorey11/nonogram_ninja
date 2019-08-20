@@ -56,7 +56,9 @@ function createRowClues(grid){
   return rowClues
 }
 
-
+export function switchCell(coords) {
+  return (dispatch)=> dispatch({type: 'SWITCH_CELL', coords})
+}
 
 export function setSolutionAndCluesFromSpecs(height, width, solution){
   const gridSolution=createSolutionGrid(height, width, solution)

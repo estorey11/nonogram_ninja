@@ -24,7 +24,7 @@ export default function manageNewNon(state = {
         grid: grid
       }
 
-    case 'SWITCH_CELL':
+    case 'NEW_SWITCH_CELL':
 
       const coords = action.coords.split(',')
       const x = parseInt(coords[0])

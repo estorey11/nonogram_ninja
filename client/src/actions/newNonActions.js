@@ -10,5 +10,5 @@ export function postNonogram(newNonData) {
 }
 
 export function switchCell(coords) {
-  return (dispatch)=> dispatch({type: 'SWITCH_CELL', coords})
+  return (dispatch)=> dispatch({type: 'NEW_SWITCH_CELL', coords})
 }
