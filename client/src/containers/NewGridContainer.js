@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import SubmitButton from '../components/SubmitButton'
 import {postNonogram, mouseUp, mouseOverCell, mouseDownOnCell, rightClickCell} from '../actions/newNonActions'
 import TextInput from '../components/TextInput'
+import {withRouter} from 'react-router-dom';
 
 
 class NewGridContainer extends Component {
@@ -22,6 +23,7 @@ class NewGridContainer extends Component {
 
   handleSubmitClick=event=>{
     this.props.postNonogram(this.gridConverter())
+    this.props.history.push('/success');
   }
 
   gridConverter=()=>{
@@ -59,4 +61,4 @@ const mapStateToProps = state => ({ grid: state.newNon.grid })
 
 
 
-export default connect(mapStateToProps, {postNonogram, mouseUp, mouseOverCell, mouseDownOnCell, rightClickCell})(NewGridContainer)
+export default withRouter(connect(mapStateToProps, {postNonogram, mouseUp, mouseOverCell, mouseDownOnCell, rightClickCell})(NewGridContainer))
