@@ -60,6 +60,14 @@ export function mouseDownOnCell(coords) {
   return (dispatch)=> dispatch({type: 'MOUSE_DOWN_ON_CELL', coords})
 }
 
+export function mouseOverCell(coords){
+  return (dispatch)=> dispatch({type: 'MOUSE_OVER_CELL', coords})
+}
+
+export function mouseUp(){
+  return (dispatch)=> dispatch({type: 'MOUSE_UP',})
+}
+
 export function setSolutionAndCluesFromSpecs(height, width, solution){
   const gridSolution=createSolutionGrid(height, width, solution)
   const rowClues=createRowClues(gridSolution)

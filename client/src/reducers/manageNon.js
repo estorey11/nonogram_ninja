@@ -22,6 +22,10 @@ export default function manageNon(state = {
       }
       return state;
 
+    case "MOUSE_UP":
+
+      return {...state, isDragging: false}
+
     case 'START_NON_REQUEST':
 
       return {...state, isFetching: true}

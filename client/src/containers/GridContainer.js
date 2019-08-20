@@ -2,13 +2,17 @@ import React, { Component } from 'react';
 import Grid from '../components/nons/Grid'
 import { connect } from 'react-redux'
 import SubmitButton from '../components/SubmitButton'
-import {rightClickCell, mouseDownOnCell} from '../actions/nonActions'
+import {rightClickCell, mouseDownOnCell, mouseOverCell, mouseUp} from '../actions/nonActions'
 
 
 class GridContainer extends Component {
 
-  handleMouseDownOnCell=event=>{
-    this.props.mouseDownOnCell(event.target.id)
+  handleMouseEvents=event=>{
+    console.log(event.altKey)
+    if (event.type==='mousedown'){this.props.mouseDownOnCell(event.target.id)}
+    else if (event.type==='mouseover'){this.props.mouseOverCell(event.target.id)}
+    else if (event.type==='mouseup'){this.props.mouseUp()}
+
   }
 
   handleCellRightClick=event=>{
@@ -26,7 +30,7 @@ class GridContainer extends Component {
     return (
       <div>
         <SubmitButton handleOnClick={this.handleSubmitClick}/>
-        <Grid grid={this.props.grid} rowClues={this.props.rowClues} colClues={this.props.colClues} handleOnRightClick={this.handleCellRightClick} handleOnMouseDown={this.handleMouseDownOnCell}/>
+        <Grid grid={this.props.grid} rowClues={this.props.rowClues} colClues={this.props.colClues} handleOnRightClick={this.handleCellRightClick} handleOnMouseDown={this.handleMouseDownOnCell} handleMouseEvents={this.handleMouseEvents}/>
       </div>
     );
   }
@@ -36,4 +40,4 @@ const mapStateToProps = state => ({ grid: state.non.grid, rowClues: state.non.ro
 
 
 
-export default connect(mapStateToProps, {rightClickCell, mouseDownOnCell})(GridContainer)
+export default connect(mapStateToProps, {rightClickCell, mouseDownOnCell, mouseOverCell, mouseUp})(GridContainer)
