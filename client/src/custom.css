@@ -2,7 +2,7 @@ table, th, td {
   border: 1px solid black;
   margin-left:auto;
   margin-right:auto;
-  -webkit-user-select: none; /* Safari */        
+  -webkit-user-select: none; /* Safari */
   -moz-user-select: none; /* Firefox */
   -ms-user-select: none; /* IE10+/Edge */
   user-select: none; /* Standard */
@@ -31,4 +31,8 @@ td {
   width: 20px;
   font-size: 13px;
   vertical-align: bottom;
+}
+
+form {
+  margin-top: 20px;
 }

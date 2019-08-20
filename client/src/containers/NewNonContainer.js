@@ -9,7 +9,10 @@ class NewNonContainer extends Component {
   state={yLength: 5, xLength: 5}
 
   handleSizeChange=event=>{
-    this.setState({[event.target.name]: event.target.value})
+    let value=event.target.value
+    if (value>30) {value=30}
+    if (value<1) {value=1}
+    this.setState({[event.target.name]: value})
   }
 
   componentDidUpdate(){
