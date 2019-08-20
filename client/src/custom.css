@@ -4,8 +4,8 @@ table, th, td {
   margin-right:auto;
 }
 
-td {
+td, th {
   width: 20px;
   height: 20px;
-  font-size: 10px;
+  font-size: 14px;
 }
