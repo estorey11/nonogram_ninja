@@ -3,9 +3,12 @@ import NewGrid from '../components/newNons/NewGrid'
 import { connect } from 'react-redux'
 import SubmitButton from '../components/SubmitButton'
 import {postNonogram, mouseUp, mouseOverCell, mouseDownOnCell, rightClickCell} from '../actions/newNonActions'
+import TextInput from '../components/TextInput'
 
 
 class NewGridContainer extends Component {
+
+  state={nameValue: ""}
 
   handleMouseEvents=event=>{
     if (event.type==='mousedown'){this.props.mouseDownOnCell(event.target.id)}
@@ -26,7 +29,7 @@ class NewGridContainer extends Component {
     const width=this.props.grid[0].length
     const solution=this.solutionConverter();
 
-    return {nonogram: {height: height, width: width, solution: solution} }
+    return {nonogram: {height: height, width: width, solution: solution, name: this.state.nameValue} }
   }
 
   solutionConverter=()=>{
@@ -34,13 +37,18 @@ class NewGridContainer extends Component {
     return solutionRows.join('')
   }
 
+  handleNameChange=event=>{
+    this.setState({nameValue: event.target.value})
+  }
+
 
   render() {
 
     return (
       <div>
-        <SubmitButton handleOnClick={this.handleSubmitClick}/>
-        <NewGrid grid={this.props.grid} handleMouseEvents={this.handleMouseEvents}/>
+        <SubmitButton handleOnClick={this.handleSubmitClick} label="Submit Nonogram"/>
+        <TextInput label="Nonogram Name:" value={this.state.nameValue} handleOnChange={this.handleNameChange}/>
+        <NewGrid grid={this.props.grid} handleMouseEvents={this.handleMouseEvents} />
       </div>
     );
   }

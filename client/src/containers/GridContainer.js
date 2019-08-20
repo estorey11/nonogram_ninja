@@ -27,7 +27,7 @@ class GridContainer extends Component {
 
     return (
       <div>
-        <SubmitButton handleOnClick={this.handleSubmitClick}/>
+        <SubmitButton handleOnClick={this.handleSubmitClick} label="Submit Solution"/>
         <Grid grid={this.props.grid} rowClues={this.props.rowClues} colClues={this.props.colClues} handleMouseEvents={this.handleMouseEvents}/>
       </div>
     );

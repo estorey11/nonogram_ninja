@@ -1,6 +1,6 @@
 
 import React from 'react';
 
-const SubmitButton = props => <button onClick={props.handleOnClick}>Submit Nonogram</button>
+const SubmitButton = props => <button onClick={props.handleOnClick}>{props.label}</button>
 
 export default SubmitButton;
