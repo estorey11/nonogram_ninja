@@ -56,8 +56,8 @@ function createRowClues(grid){
   return rowClues
 }
 
-export function switchCell(coords) {
-  return (dispatch)=> dispatch({type: 'SWITCH_CELL', coords})
+export function mouseDownOnCell(coords) {
+  return (dispatch)=> dispatch({type: 'MOUSE_DOWN_ON_CELL', coords})
 }
 
 export function setSolutionAndCluesFromSpecs(height, width, solution){

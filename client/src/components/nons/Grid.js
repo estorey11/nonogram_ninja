@@ -34,7 +34,7 @@ class Grid extends Component {
           style={cell===1 ? {backgroundColor: 'black'} : {backgroundColor: 'white'}}
           key={x.toString()+','+y.toString()}
           id={x.toString()+','+y.toString()}
-          onClick={this.props.handleOnClick}
+          onMouseDown={this.props.handleOnMouseDown}
           onContextMenu={this.props.handleOnRightClick}>
             { cell==='X' ? cell : '' }
           </td> )

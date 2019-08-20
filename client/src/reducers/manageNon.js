@@ -2,23 +2,25 @@ const defaultGrid=[[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]]
 const defaultNonograms=[{id:0, height: 5, width: 5, solution: '0000000000000000000000000'}]
 
 export default function manageNon(state = {
-  grid: defaultGrid, gridSolution: defaultGrid, isFetching: false, nonograms: defaultNonograms, rowClues: [], colClues: []
+  grid: defaultGrid, gridSolution: defaultGrid, isFetching: false, nonograms: defaultNonograms, rowClues: [], colClues: [], isDragging: false
 }, action) {
   switch (action.type) {
 
-    case 'SWITCH_CELL':
-
-      const  coords = action.coords.split(',')
-      const  x = parseInt(coords[0])
-      const  y = parseInt(coords[1])
-      let  clickedGrid = [...state.grid]
-
-      clickedGrid[y][x]=(clickedGrid[y][x]===0 ? 1 : 0)
-
+    case 'MOUSE_DOWN_ON_CELL':
       return {
         ...state,
-        grid: clickedGrid
+        grid: newGridFromCLick(action.coords, [...state.grid]), isDragging: true
       }
+
+    case 'MOUSE_OVER_CELL':
+
+      if (state.isDragging){
+        return {
+          ...state,
+          grid: newGridFromCLick(action.coords, [...state.grid]), isDragging: true
+        }
+      }
+      return state;
 
     case 'START_NON_REQUEST':
 
@@ -51,3 +53,13 @@ export default function manageNon(state = {
 
   }
 };
+
+function newGridFromCLick(coords, grid){
+  const  parsedCoords = coords.split(',')
+  const  x = parseInt(parsedCoords[0])
+  const  y = parseInt(parsedCoords[1])
+  let  clickedGrid = grid
+  clickedGrid[y][x]=(clickedGrid[y][x]===0 ? 1 : 0)
+
+  return clickedGrid
+}

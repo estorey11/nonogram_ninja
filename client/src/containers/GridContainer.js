@@ -2,13 +2,13 @@ import React, { Component } from 'react';
 import Grid from '../components/nons/Grid'
 import { connect } from 'react-redux'
 import SubmitButton from '../components/SubmitButton'
-import {rightClickCell, switchCell} from '../actions/nonActions'
+import {rightClickCell, mouseDownOnCell} from '../actions/nonActions'
 
 
 class GridContainer extends Component {
 
-  handleCellClick=event=>{
-    this.props.switchCell(event.target.id)
+  handleMouseDownOnCell=event=>{
+    this.props.mouseDownOnCell(event.target.id)
   }
 
   handleCellRightClick=event=>{
@@ -26,7 +26,7 @@ class GridContainer extends Component {
     return (
       <div>
         <SubmitButton handleOnClick={this.handleSubmitClick}/>
-        <Grid grid={this.props.grid} rowClues={this.props.rowClues} colClues={this.props.colClues} handleOnRightClick={this.handleCellRightClick} handleOnClick={this.handleCellClick}/>
+        <Grid grid={this.props.grid} rowClues={this.props.rowClues} colClues={this.props.colClues} handleOnRightClick={this.handleCellRightClick} handleOnMouseDown={this.handleMouseDownOnCell}/>
       </div>
     );
   }
@@ -36,4 +36,4 @@ const mapStateToProps = state => ({ grid: state.non.grid, rowClues: state.non.ro
 
 
 
-export default connect(mapStateToProps, {switchCell, rightClickCell})(GridContainer)
+export default connect(mapStateToProps, {rightClickCell, mouseDownOnCell})(GridContainer)
