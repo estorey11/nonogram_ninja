@@ -20,7 +20,7 @@ class Grid extends Component {
   mapColClues(){
 
     let colClues=this.props.colClues.map(clueGroup=>
-      <th>{clueGroup.join('\n')}</th>
+      <th class="colClue">{clueGroup.join('\n')}</th>
     )
 
     colClues.unshift(<td></td>)
@@ -38,7 +38,7 @@ class Grid extends Component {
   }
 
   getRowClue(rowNum){
-    return (<th>{this.props.rowClues[rowNum].join(' ')}</th>)
+    return (<th class="rowClue">{this.props.rowClues[rowNum].join('\xa0\xa0\xa0')}</th>)
   }
 
   render() {
