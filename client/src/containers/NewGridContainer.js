@@ -2,13 +2,15 @@ import React, { Component } from 'react';
 import NewGrid from '../components/newNons/NewGrid'
 import { connect } from 'react-redux'
 import SubmitButton from '../components/SubmitButton'
-import {postNonogram, switchCell} from '../actions/newNonActions'
+import {postNonogram, mouseUp, mouseOverCell, mouseDownOnCell} from '../actions/newNonActions'
 
 
 class NewGridContainer extends Component {
 
-  handleCellClick=event=>{
-    this.props.switchCell(event.target.id)
+  handleMouseEvents=event=>{
+    if (event.type==='mousedown'){this.props.mouseDownOnCell(event.target.id)}
+    else if (event.type==='mouseover'){this.props.mouseOverCell(event.target.id)}
+    else if (event.type==='mouseup'){this.props.mouseUp()}
   }
 
   handleSubmitClick=event=>{
@@ -34,7 +36,7 @@ class NewGridContainer extends Component {
     return (
       <div>
         <SubmitButton handleOnClick={this.handleSubmitClick}/>
-        <NewGrid grid={this.props.grid} handleOnClick={this.handleCellClick}/>
+        <NewGrid grid={this.props.grid} handleMouseEvents={this.handleMouseEvents}/>
       </div>
     );
   }
@@ -45,4 +47,4 @@ const mapStateToProps = state => ({ grid: state.newNon.grid })
 
 
 
-export default connect(mapStateToProps, {postNonogram, switchCell})(NewGridContainer)
+export default connect(mapStateToProps, {postNonogram, mouseUp, mouseOverCell, mouseDownOnCell})(NewGridContainer)

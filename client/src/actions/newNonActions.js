@@ -9,6 +9,14 @@ export function postNonogram(newNonData) {
   };
 }
 
-export function switchCell(coords) {
-  return (dispatch)=> dispatch({type: 'NEW_SWITCH_CELL', coords})
+export function mouseDownOnCell(coords) {
+  return (dispatch)=> dispatch({type: 'NEW_MOUSE_DOWN_ON_CELL', coords})
+}
+
+export function mouseOverCell(coords){
+  return (dispatch)=> dispatch({type: 'NEW_MOUSE_OVER_CELL', coords})
+}
+
+export function mouseUp(){
+  return (dispatch)=> dispatch({type: 'NEW_MOUSE_UP',})
 }

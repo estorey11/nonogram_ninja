@@ -37,7 +37,7 @@ class Grid extends Component {
           onMouseDown={this.props.handleMouseEvents}
           onMouseUp={this.props.handleMouseEvents}
           onMouseOver={this.props.handleMouseEvents}
-          onContextMenu={this.props.handleOnRightClick}>
+          onContextMenu={this.props.handleMouseEvents}>
             { cell==='X' ? cell : '' }
           </td> )
     })

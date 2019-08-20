@@ -8,17 +8,15 @@ import {rightClickCell, mouseDownOnCell, mouseOverCell, mouseUp} from '../action
 class GridContainer extends Component {
 
   handleMouseEvents=event=>{
-    console.log(event.altKey)
     if (event.type==='mousedown'){this.props.mouseDownOnCell(event.target.id)}
     else if (event.type==='mouseover'){this.props.mouseOverCell(event.target.id)}
     else if (event.type==='mouseup'){this.props.mouseUp()}
-
+    else if (event.type==='contextmenu') {
+      event.preventDefault()
+      this.props.rightClickCell(event.target.id)
+    }
   }
 
-  handleCellRightClick=event=>{
-    event.preventDefault()
-    this.props.rightClickCell(event.target.id)
-  }
 
   handleSubmitClick=event=>{
 
@@ -30,7 +28,7 @@ class GridContainer extends Component {
     return (
       <div>
         <SubmitButton handleOnClick={this.handleSubmitClick}/>
-        <Grid grid={this.props.grid} rowClues={this.props.rowClues} colClues={this.props.colClues} handleOnRightClick={this.handleCellRightClick} handleOnMouseDown={this.handleMouseDownOnCell} handleMouseEvents={this.handleMouseEvents}/>
+        <Grid grid={this.props.grid} rowClues={this.props.rowClues} colClues={this.props.colClues} handleMouseEvents={this.handleMouseEvents}/>
       </div>
     );
   }

@@ -18,7 +18,14 @@ class NewGrid extends Component {
   mapRow(row, y){
     return(
       row.map((cell, x)=>{
-        return (<td style={cell===1 ? {backgroundColor: 'black'} : {backgroundColor: 'white'}} key={x.toString()+','+y.toString()} id={x.toString()+','+y.toString()} onClick={this.props.handleOnClick}>{}</td>)
+        return (<td style={cell===1 ? {backgroundColor: 'black'} : {backgroundColor: 'white'}}
+          key={x.toString()+','+y.toString()}
+          id={x.toString()+','+y.toString()}
+          onMouseDown={this.props.handleMouseEvents}
+          onMouseUp={this.props.handleMouseEvents}
+          onMouseOver={this.props.handleMouseEvents}
+          >{}</td>
+        )
       })
     )
   }

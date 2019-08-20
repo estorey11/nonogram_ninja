@@ -49,7 +49,7 @@ export default function manageNon(state = {
 
       return {
         ...state,
-        grid: rClickedGrid
+        grid: rClickedGrid, isDragging: false
       }
 
     default:
@@ -58,7 +58,7 @@ export default function manageNon(state = {
   }
 };
 
-function newGridFromCLick(coords, grid){
+export function newGridFromCLick(coords, grid){
   const  parsedCoords = coords.split(',')
   const  x = parseInt(parsedCoords[0])
   const  y = parseInt(parsedCoords[1])

@@ -1,7 +1,9 @@
+import {newGridFromCLick} from './manageNon'
+
 const defaultGrid=[[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0],[0,0,0,0,0]]
 
 export default function manageNewNon(state = {
-  grid: defaultGrid, isFetching: false,
+  grid: defaultGrid, isFetching: false, isDragging: false
 }, action) {
   switch (action.type) {
 
@@ -24,19 +26,6 @@ export default function manageNewNon(state = {
         grid: grid
       }
 
-    case 'NEW_SWITCH_CELL':
-
-      const coords = action.coords.split(',')
-      const x = parseInt(coords[0])
-      const y = parseInt(coords[1])
-      let clickedGrid = [...state.grid]
-
-      clickedGrid[y][x]=(clickedGrid[y][x]===0 ? 1 : 0)
-
-      return {
-        ...state,
-        grid: clickedGrid
-      }
 
     case 'START_NON_POST':
 
@@ -50,6 +39,25 @@ export default function manageNewNon(state = {
 
       return {...state, isFetching: false}
 
+    case 'NEW_MOUSE_DOWN_ON_CELL':
+      return {
+        ...state,
+        grid: newGridFromCLick(action.coords, [...state.grid]), isDragging: true
+      }
+
+    case 'NEW_MOUSE_OVER_CELL':
+
+      if (state.isDragging){
+        return {
+          ...state,
+          grid: newGridFromCLick(action.coords, [...state.grid]), isDragging: true
+          }
+        }
+      return state;
+
+    case "NEW_MOUSE_UP":
+
+      return {...state, isDragging: false}
 
     default:
       return state;
