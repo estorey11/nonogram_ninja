@@ -30,7 +30,7 @@ export default function manageNon(state = {
 
     case 'SET_GRID_SOLUTION_AND_CLUES':
 
-      return {...state, gridSolution: action.grid, rowClues: action.rowClues, colClues: action.colClues}
+      return {...state, gridSolution: action.gridSolution, rowClues: action.rowClues, colClues: action.colClues, grid: action.grid}
 
     default:
       return state;

@@ -16,6 +16,7 @@ class NonContainer extends Component {
       return (
         <div>
           <h2>{nonogram.name || "Unnamed Nonogram"}</h2>
+          <GridContainer />
         </div>
       )
     }

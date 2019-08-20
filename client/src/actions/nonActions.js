@@ -55,9 +55,10 @@ function createRowClues(grid){
 
 
 export function setSolutionAndCluesFromSpecs(height, width, solution){
-  const grid=createSolutionGrid(height, width, solution)
-  const rowClues=createRowClues(grid)
-  const colClues=createRowClues(transpose(grid))
+  const gridSolution=createSolutionGrid(height, width, solution)
+  const rowClues=createRowClues(gridSolution)
+  const colClues=createRowClues(transpose(gridSolution))
+  const grid=gridSolution.map(row=> row.map( cell=> 0))
 
-  return (dispatch)=> dispatch({type: 'SET_GRID_SOLUTION_AND_CLUES', grid, rowClues, colClues})
+  return (dispatch)=> dispatch({type: 'SET_GRID_SOLUTION_AND_CLUES', gridSolution, rowClues, colClues, grid})
 }
