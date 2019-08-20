@@ -59,6 +59,10 @@ export default function manageNewNon(state = {
 
       return {...state, isDragging: false}
 
+    case 'NEW_RIGHT_CLICK_CELL':
+
+      return {...state, isDragging: false}
+
     default:
       return state;
 

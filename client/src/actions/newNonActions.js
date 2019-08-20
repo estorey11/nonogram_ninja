@@ -20,3 +20,7 @@ export function mouseOverCell(coords){
 export function mouseUp(){
   return (dispatch)=> dispatch({type: 'NEW_MOUSE_UP',})
 }
+
+export function rightClickCell(){
+  return (dispatch)=> dispatch({type: 'NEW_RIGHT_CLICK_CELL'})
+}

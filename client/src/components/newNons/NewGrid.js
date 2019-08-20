@@ -24,6 +24,7 @@ class NewGrid extends Component {
           onMouseDown={this.props.handleMouseEvents}
           onMouseUp={this.props.handleMouseEvents}
           onMouseOver={this.props.handleMouseEvents}
+          onContextMenu={this.props.handleMouseEvents}
           >{}</td>
         )
       })
