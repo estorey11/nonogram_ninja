@@ -30,7 +30,7 @@ class Grid extends Component {
 
   mapRow(row, y){
     let mappedRow = row.map((cell, x)=>{
-        return (<td style={cell===1 ? {backgroundColor: 'black'} : {backgroundColor: 'white'}} key={x.toString()+','+y.toString()} id={x.toString()+','+y.toString()} onClick={this.props.handleOnClick}>{}</td>)
+        return (<td style={cell===1 ? {backgroundColor: 'black'} : {backgroundColor: 'white'}} key={x.toString()+','+y.toString()} id={x.toString()+','+y.toString()} onClick={this.props.handleOnClick}>{cell==='X' ? cell : ''}</td>)
     })
 
     mappedRow.unshift(this.getRowClue(y))

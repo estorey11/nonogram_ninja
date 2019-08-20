@@ -9,6 +9,10 @@ export function fetchNonograms() {
   };
 }
 
+export function rightClickCell(coords){
+  return (dispatch)=> dispatch({type: 'RIGHT_CLICK_CELL', coords})
+}
+
 
 function createSolutionGrid(height, width, solution){
   let grid=[]
