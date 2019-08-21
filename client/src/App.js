@@ -7,6 +7,7 @@ import {  Route, Switch, withRouter } from 'react-router-dom';
 import Navigation from './components/Navigation'
 import NonList from './components/nons/NonList'
 import './App.css';
+import Home from './components/Home'
 
 class App extends React.Component {
 
@@ -21,9 +22,14 @@ class App extends React.Component {
           <Navigation />
           <Switch>
             <Route exact path="/success" render={ () => <h1 style={{marginTop: '150px'}}>Nonogram submitted successfully!</h1> } />
+
             <Route exact path="/nonograms/new" component={ NewNonContainer } />
+
             <Route exact path="/nonograms/:nonID" render={routerProps => <NonContainer {...routerProps} nonograms={this.props.nonograms} /> }/>
+
             <Route exact path='/nonograms' render={routerProps => <NonList {...routerProps} nonograms={this.props.nonograms}/>} />
+
+            <Route path="/" render={() => <Home /> }/>
 
           </Switch>
         </div>
