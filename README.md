@@ -1,6 +1,6 @@
 # Nonogram Ninja
 
-Nonogram Ninja is a React app with a Rails back-end that allows users to create, submit, and solve their own nonograms.
+Nonogram Ninja is a react-redux app with a Rails back-end that allows users to create, submit, and solve their own nonograms.
 
 ## Authors
 
