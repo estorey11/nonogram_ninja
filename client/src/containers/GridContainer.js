@@ -7,7 +7,14 @@ import SubmitSolutionAlert from '../components/SubmitSolutionAlert'
 
 class GridContainer extends Component {
 
-  state={wrongCellCoords: []}
+  state={
+    wrongCellCoords: [],
+    solutionAlert: {
+      show: false,
+      variant: 'danger',
+      text: 'This solution is incorrect. Would you like to see the answer or try again?'
+    }
+  }
 
   handleMouseEvents=event=>{
     if (event.type==='mousedown'){this.props.mouseDownOnCell(event.target.id)}
@@ -21,7 +28,27 @@ class GridContainer extends Component {
 
 
   handleSubmitClick=event=>{
-    this.setState({...this.state, wrongCellCoords: this.getWrongCells()})
+
+    let wrongCellCoords=this.getWrongCells()
+
+    if(wrongCellCoords.length===0){
+      this.setState({...this.state, solutionAlert: {
+        show: true,
+        variant: 'success',
+        text: 'Congratulations! You solved the nonogram!'
+      }})
+    }
+
+    else {this.setState({
+      ...this.state,
+      wrongCellCoords: wrongCellCoords,
+      solutionAlert: {
+        show: true,
+        variant: 'danger',
+        text: 'This solution is incorrect. Would you like to see the answer or try again?'
+      }
+      })
+    }
   }
 
   getWrongCells(){
@@ -43,9 +70,18 @@ class GridContainer extends Component {
 
     return (
       <div>
-        <SubmitButton handleOnClick={this.handleSubmitClick} label="Submit Solution"/>
-        <SubmitSolutionAlert variant='success' show={false}/>
-        <Grid grid={this.props.grid} rowClues={this.props.rowClues} colClues={this.props.colClues} handleMouseEvents={this.handleMouseEvents}/>
+        <SubmitButton
+          handleOnClick={this.handleSubmitClick}
+          label="Submit Solution"/>
+        <SubmitSolutionAlert
+          variant={this.state.solutionAlert.variant}
+          text={this.state.solutionAlert.text}
+          show={this.state.solutionAlert.show}/>
+        <Grid
+          grid={this.props.grid}
+          rowClues={this.props.rowClues}
+          colClues={this.props.colClues}
+          handleMouseEvents={this.handleMouseEvents}/>
       </div>
     );
   }
