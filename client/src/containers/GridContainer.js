@@ -12,7 +12,8 @@ class GridContainer extends Component {
     solutionAlert: {
       show: false,
       variant: 'danger',
-      text: 'This solution is incorrect. Would you like to see the answer or try again?'
+      text: 'This solution is incorrect. Would you like to see the answer or try again?',
+      buttonShow: true,
     }
   }
 
@@ -26,6 +27,12 @@ class GridContainer extends Component {
     }
   }
 
+  handleTryAgain=()=>{
+    this.setState({...this.state, solutionAlert: {
+      ...this.state.solutionAlert,
+      show: false,
+    }})
+  }
 
   handleSubmitClick=event=>{
 
@@ -35,7 +42,8 @@ class GridContainer extends Component {
       this.setState({...this.state, solutionAlert: {
         show: true,
         variant: 'success',
-        text: 'Congratulations! You solved the nonogram!'
+        text: 'Congratulations! You solved the nonogram!',
+        buttonShow: false
       }})
     }
 
@@ -45,7 +53,8 @@ class GridContainer extends Component {
       solutionAlert: {
         show: true,
         variant: 'danger',
-        text: 'This solution is incorrect. Would you like to see the answer or try again?'
+        text: 'This solution is incorrect. Would you like to see the answer or try again?',
+        buttonShow: true,
       }
       })
     }
@@ -76,7 +85,9 @@ class GridContainer extends Component {
         <SubmitSolutionAlert
           variant={this.state.solutionAlert.variant}
           text={this.state.solutionAlert.text}
-          show={this.state.solutionAlert.show}/>
+          show={this.state.solutionAlert.show}
+          buttonShow={this.state.solutionAlert.buttonShow}
+          tryAgain={this.handleTryAgain}/>
         <Grid
           grid={this.props.grid}
           rowClues={this.props.rowClues}

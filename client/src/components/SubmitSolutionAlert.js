@@ -5,18 +5,16 @@ import Button from 'react-bootstrap/Button'
 const SubmitSolutionAlert = props =>
   <Alert variant={props.variant} show={props.show}>
     {props.text}
-    <div>
+    <div style={props.buttonShow ? {} : {display: 'none'}}>
       <Button
-        show={props.buttonShow}
         style={{margin: '10px'}}
-        onClick={props.onClick}
+        onClick={props.tryAgain}
         variant="outline-danger">
               Try Again
       </Button>
       <Button
-        show={props.buttonShow}
         style={{margin: '10px'}}
-        onClick={props.onClick}
+        onClick={props.seeSolution}
         variant="outline-danger">
               See Solution
       </Button>
