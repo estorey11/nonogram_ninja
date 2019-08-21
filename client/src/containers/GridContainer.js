@@ -8,6 +8,7 @@ import SubmitSolutionAlert from '../components/SubmitSolutionAlert'
 class GridContainer extends Component {
 
   state={
+    disableSubmit: false,
     wrongCellCoords: [],
     solutionAlert: {
       show: false,
@@ -36,6 +37,12 @@ class GridContainer extends Component {
 
   handleSeeSolution=()=>{
     this.props.seeSolution(this.state.wrongCellCoords, this.props.gridSolution)
+    this.setState({...this.state,
+      disableSubmit: true,
+      solutionAlert: {
+        ...this.state.solutionAlert,
+        show: false,
+    }})
   }
 
   handleSubmitClick=event=>{
@@ -79,11 +86,13 @@ class GridContainer extends Component {
   }
 
 
+
   render() {
 
     return (
       <div>
         <SubmitButton
+          disabled={this.state.disableSubmit}
           handleOnClick={this.handleSubmitClick}
           label="Submit Solution"/>
         <SubmitSolutionAlert

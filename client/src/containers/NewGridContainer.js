@@ -48,9 +48,10 @@ class NewGridContainer extends Component {
 
     return (
       <div>
-        <SubmitButton handleOnClick={this.handleSubmitClick} label="Submit Nonogram"/>
         <TextInput label="Nonogram Name:" value={this.state.nameValue} handleOnChange={this.handleNameChange}/>
+        <SubmitButton handleOnClick={this.handleSubmitClick} label="Submit Nonogram"/>
         <NewGrid grid={this.props.grid} handleMouseEvents={this.handleMouseEvents} />
+
       </div>
     );
   }

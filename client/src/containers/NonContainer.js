@@ -15,7 +15,7 @@ class NonContainer extends Component {
       this.props.setSolutionAndCluesFromSpecs(nonogram.height, nonogram.width, nonogram.solution)
       return (
         <div>
-          <h2>{nonogram.name || "Unnamed Nonogram"}</h2>
+          <h2 style={{margin: '20px'}}>{nonogram.name || "Unnamed Nonogram"}</h2>
           <GridContainer />
         </div>
       )
