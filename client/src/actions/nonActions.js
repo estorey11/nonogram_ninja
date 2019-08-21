@@ -76,3 +76,13 @@ export function setSolutionAndCluesFromSpecs(height, width, solution){
 
   return (dispatch)=> dispatch({type: 'SET_GRID_SOLUTION_AND_CLUES', gridSolution, rowClues, colClues, grid})
 }
+
+export function seeSolution(wrongCellCoords, gridSolution){
+  let grid= [...gridSolution]
+
+  wrongCellCoords.forEach(coords=>
+    grid[coords[1]][coords[0]]+=2
+  )
+
+  return (dispatch)=> dispatch({type: 'SEE_SOLUTION', grid})
+}

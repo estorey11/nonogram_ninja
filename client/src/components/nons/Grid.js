@@ -31,7 +31,7 @@ class Grid extends Component {
   mapRow(row, y){
     let mappedRow = row.map((cell, x)=>{
         return (<td
-          style={cell===1 ? {backgroundColor: 'black'} : {backgroundColor: 'white'}}
+          style={this.getCellStyle(cell)}
           key={x.toString()+','+y.toString()}
           id={x.toString()+','+y.toString()}
           onMouseDown={this.props.handleMouseEvents}
@@ -44,6 +44,19 @@ class Grid extends Component {
 
     mappedRow.unshift(this.getRowClue(y))
     return mappedRow
+  }
+
+  getCellStyle(cell){
+    switch (cell) {
+      case 0: return {backgroundColor: 'white'}
+      case 1: return {backgroundColor: 'black'}
+      case 2: return {backgroundColor: 'white',
+                      outline: '1px solid red',
+                      outlineOffset: '-4px'}
+      case 3: return {backgroundColor: 'red'}
+      case 'X': return {backgroundColor: 'white'}
+      default: return {backgroundColor: 'white'}
+    }
   }
 
   getRowClue(rowNum){

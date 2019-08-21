@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Grid from '../components/nons/Grid'
 import { connect } from 'react-redux'
 import SubmitButton from '../components/SubmitButton'
-import {rightClickCell, mouseDownOnCell, mouseOverCell, mouseUp} from '../actions/nonActions'
+import {rightClickCell, mouseDownOnCell, mouseOverCell, mouseUp, seeSolution} from '../actions/nonActions'
 import SubmitSolutionAlert from '../components/SubmitSolutionAlert'
 
 class GridContainer extends Component {
@@ -32,6 +32,10 @@ class GridContainer extends Component {
       ...this.state.solutionAlert,
       show: false,
     }})
+  }
+
+  handleSeeSolution=()=>{
+    this.props.seeSolution(this.state.wrongCellCoords, this.props.gridSolution)
   }
 
   handleSubmitClick=event=>{
@@ -87,7 +91,8 @@ class GridContainer extends Component {
           text={this.state.solutionAlert.text}
           show={this.state.solutionAlert.show}
           buttonShow={this.state.solutionAlert.buttonShow}
-          tryAgain={this.handleTryAgain}/>
+          tryAgain={this.handleTryAgain}
+          seeSolution={this.handleSeeSolution}/>
         <Grid
           grid={this.props.grid}
           rowClues={this.props.rowClues}
@@ -102,4 +107,4 @@ const mapStateToProps = state => ({ grid: state.non.grid, rowClues: state.non.ro
 
 
 
-export default connect(mapStateToProps, {rightClickCell, mouseDownOnCell, mouseOverCell, mouseUp})(GridContainer)
+export default connect(mapStateToProps, {rightClickCell, mouseDownOnCell, mouseOverCell, mouseUp, seeSolution})(GridContainer)
