@@ -1,24 +1,11 @@
-# README
+# Nonogram Ninja
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Nonogram Ninja is a React app with a Rails back-end that allows users to create, submit, and solve their own nonograms.
 
-Things you may want to cover:
+## Authors
 
-* Ruby version
+Eric Storey
 
-* System dependencies
+## License
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
