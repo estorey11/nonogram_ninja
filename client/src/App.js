@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import {fetchNonograms} from './actions/nonActions'
 import {  Route, Switch, withRouter } from 'react-router-dom';
 import Navigation from './components/Navigation'
-import NonList from './components/nons/NonList'
+import NonogramsContainer from './containers/NonogramsContainer'
 import './App.css';
 import Home from './components/Home'
 
@@ -27,7 +27,7 @@ class App extends React.Component {
 
             <Route exact path="/nonograms/:nonID" render={routerProps => <NonContainer {...routerProps} nonograms={this.props.nonograms} /> }/>
 
-            <Route exact path='/nonograms' render={routerProps => <NonList {...routerProps} nonograms={this.props.nonograms}/>} />
+            <Route exact path='/nonograms' render={routerProps => <NonogramsContainer {...routerProps} nonograms={this.props.nonograms}/>} />
 
             <Route path="/" render={() => <Home /> }/>
 
